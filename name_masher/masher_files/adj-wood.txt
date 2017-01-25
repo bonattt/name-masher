@@ -1,0 +1,7 @@
+wooden
+oaken
+oak
+ash-wood
+cedar
+elven-wood
+ancient-wood

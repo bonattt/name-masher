@@ -1,0 +1,15 @@
+iron
+steel
+silver
+gold
+golden
+gilded
+adamantium
+adamantine
+rusty
+kryptonite
+bronze
+tungsten
+carbide
+dragon-steel
+obsidian

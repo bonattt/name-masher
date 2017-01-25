@@ -1,0 +1,11 @@
+longsword
+shortsword
+sword
+blade
+greatsword
+heavy mace
+mace
+war hammer
+axe
+battle axe
+great axe

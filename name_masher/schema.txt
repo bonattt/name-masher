@@ -1,0 +1,6 @@
+<short.txt, shorter.txt>;
+<adj-modifiers.txt>;
+<noun-weapon.txt>;
+'of';
+<adj-total.txt>;
+<verb-cutting.txt>
