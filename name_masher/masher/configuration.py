@@ -32,6 +32,7 @@ class Configuration:
             raise WordMasherConfigException("trying to load non existant schema")
         schema_path = self.values["schemas"][name]
         self.schemas[name] = self.read_schema_from_file(schema_path)
+        print("loaded new schema", name)
 
     def read_schema_from_file(self, schema_path):
         if not os.path.isfile(schema_path):
@@ -39,12 +40,14 @@ class Configuration:
         file = open(schema_path, 'r')
         new_schema = file.read()
         file.close()
+        print("read new schema from file '" + schema_path + "'")
         return new_schema
 
     def load_new_generator(self, name):
         if not name in self.schemas:
             self.load_new_schema(name)
         self.generators[name] = self.parser.parse_schema(self.schemas[name])
+        print("loaded new generator,", name)
 
     def get_generator(self, name):
         if not name in self.generators:

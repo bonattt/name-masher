@@ -1,4 +1,3 @@
-?(.2, +1:6, "");
 ?(.2, <adj-quality-bad.txt>, <adj-quality-good.txt>);
 ?(.4, <adj-size-big.txt && adj-size-small.txt>, "");
 ?(.2, <adj-age-old.txt>, "");

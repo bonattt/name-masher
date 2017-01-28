@@ -54,11 +54,11 @@ def run():
             print(generator.generateText())
 
         else:
-            if user_in in config["schemas"]:
-                generator = read_new_schema(config["schemas"][user_in])
-                all_generators[user_in] = None
-            else:
-                print('"'+user_in+'"', "is not a schema.")
+            generator = config.get_generator(user_in)
+            print("set the active generator to", user_in)
+            #     all_generators[user_in] = None
+            # else:
+            #     print('"'+user_in+'"', "is not a schema.")
 
     print('exiting shell. Have a nice day! :)')
 
