@@ -5,17 +5,21 @@ from masher.exceptions import WordMasherParseException
 from masher.exceptions import WordMasherUnimplimentedException
 from masher.exceptions import WordMasherException
 
-global count
-count = 0
-
 
 class ListGenerator():
     
-    def __init__(self, words=[]):
-        global count
+    def __init__(self, words):
+        # cannot use words=[] because of a very strange bug I got where python
+        # used the SAME empty list as the default value for each ListGenerator.
+        # The result was that every ListGenerator instance shared the same
+        # self.words value.
         self.words = words
-        self.count = count
-        count+= 1
+
+    def __str__(self):
+        return "<List Generator (" + str(len(self.words)) + " words)>"
+
+    def __repr__(self):
+        return str(self)
             
     def isExtensible(self):
         return False
@@ -27,12 +31,18 @@ class ListGenerator():
         
     def generateText(self):
         index = randint(0,len(self.words)-1)
-        return '<' + self.words[index] + ' (' + str(self.count) +') >'
+        return self.words[index]
                 
 class CompositeGenerator():
 
     def __init__(self, generators=[]):
         self.generators = generators
+
+    def __str__(self):
+        return "<Composite Generator " + str(self.generators) + " >"
+
+    def __repr__(self):
+        return str(self)
         
     def isExtensible(self):
         return True
@@ -49,6 +59,12 @@ class ConstantGenerator():
     
     def __init__(self, constant):
         self.word = constant
+
+    def __str__(self):
+        return "<Constant Generator '" + self.word + "'>"
+
+    def __repr__(self):
+        return str(self)
         
     def isExtensible(self):
         return False
@@ -68,6 +84,14 @@ class RandomChanceGenerator():
         self.generator = generator
         self.alt = alt
         self.chance = chance
+
+    def __str__(self):
+        return "<Random Chance Generator (" +\
+               str(self.chance) + ', ' + str(self.generator) +\
+               ', ' + str(self.alt) + ")>"
+
+    def __repr__(self):
+        return str(self)
         
     def addGenerator(self, generator):
         raise WordMasherUnimplimentedException('method "RandomChanceGenerator.addGenerator" unimplemented')
@@ -87,6 +111,12 @@ class PhraseGenerator():
     
     def __init__(self, generators=[]):
         self.generators = generators
+
+    def __str__(self):
+        return "<Phrase Generator " + str(self.generators) + ">"
+
+    def __repr__(self):
+        return str(self)
         
     def addGenerator(self, generator):
         self.generators.append(generator)
