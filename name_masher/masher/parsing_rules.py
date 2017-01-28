@@ -93,7 +93,7 @@ class PhraseRule():
         return False
     
     def getGenerator(self, syllable):
-        syllables = syllable[1:-1].split(',')
+        syllables = syllable[1:-1].split(' | ')
         generators = []
         for seg in syllables:
             generators.append(self.parser.parse_schema(seg))

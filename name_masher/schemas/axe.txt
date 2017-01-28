@@ -7,4 +7,4 @@
 "of ";
 ?(.3, <adj-total.txt>, "");
 <verb-cutting.txt && verb-wounding.txt && verb-destruction.txt>;
-?(.05, <verb-cutting.txt && verb-wounding.txt && verb-destruction.txt>, "")
+?(.05, {"and " | <verb-cutting.txt && verb-wounding.txt && verb-destruction.txt>}, "")
