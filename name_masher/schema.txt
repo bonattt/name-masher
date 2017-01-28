@@ -1,4 +1,3 @@
-<short.txt, shorter.txt>;
 <adj-modifiers.txt>;
 <noun-weapon.txt>;
 'of';
