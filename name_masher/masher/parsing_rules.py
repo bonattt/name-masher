@@ -57,12 +57,9 @@ class ListRule:
         inner_syllable = syllable[1:-1].split(' && ')
         wordGen = ListGenerator([])
         for filename in inner_syllable:
-            print("DEBUG: opening", './masher_files/' + filename.strip())
-            file = open('./masher_files/' + filename.strip(), 'r')
+            file = open('./name_files/' + filename.strip(), 'r')
             filetext = file.read()
             file.close()
-            print("DEBUG:", filetext.replace('\n', ', '))
-            print("DEBUG:", wordGen.words)
             wordGen.words += filetext.split('\n')
         return wordGen
         
