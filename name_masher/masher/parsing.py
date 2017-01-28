@@ -12,7 +12,7 @@ from masher.parsing_rules import EnchantmentBonusRule
 from masher.parsing_rules import PhraseRule
 from masher.parsing_rules import RandomRule
 
-class DefaultParser():
+class DefaultParser:
 
     def __init__(self):
         self.rules = []
