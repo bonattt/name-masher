@@ -11,6 +11,11 @@ which can be loaded by Name Masher, with the name they should be referenced by a
 
 Do not use the key default for an entry in the "schemas" dictionary, as it is used to store the default schema at runtime.
 
+# name files
+all of Name Masher's name files are stored in the directory "name_files" by default. Name files are stored as a list of
+words, separated by newlines. These files are used by the ListGenerator to compile a list of words to randomly select
+an output from.
+
 # schemas
 
 Schemas are currently stored in a less than straight forward format (see below) but will eventually be updated to an
