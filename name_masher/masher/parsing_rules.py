@@ -7,7 +7,8 @@ from masher.generators import RandomChanceGenerator
 
 from masher.exceptions import WordMasherParseException
 
-class ConstantRule():
+
+class ConstantRule:
 
     def metBy(self, syllable):
         if (syllable.startswith('"') and syllable.endswith('"')) or (syllable.startswith("'") and syllable.endswith("'")):
@@ -20,7 +21,7 @@ class ConstantRule():
         
 # rule: ?(_chance, _generator_, _elseGenereator_)
 # else generator is optional, it defaults to the constant ''
-class RandomRule():
+class RandomRule:
 
     def __init__(self, parser):
         self.parser = parser
@@ -45,7 +46,7 @@ class RandomRule():
         return RandomChanceGenerator(generator, elseGen, chance)
         
 
-class ListRule():
+class ListRule:
 
     def metBy(self, syllable):
         if syllable.startswith('<') and syllable.endswith('>'):
@@ -66,7 +67,7 @@ class ListRule():
         return wordGen
         
         
-class EnchantmentBonusRule():
+class EnchantmentBonusRule:
     
     def metBy(self, syllable):
         if syllable.startswith('+'):
@@ -82,7 +83,7 @@ class EnchantmentBonusRule():
         return wordGen
       
       
-class PhraseRule():
+class PhraseRule:
 
     def __init__(self, parser):
         self.parser = parser
@@ -99,5 +100,3 @@ class PhraseRule():
             generators.append(self.parser.parse_schema(seg))
             
         return PhraseGenerator(generators)
-        
-        
