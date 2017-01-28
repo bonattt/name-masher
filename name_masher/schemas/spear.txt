@@ -1,5 +1,6 @@
-?(.2, <adj-quality-bad.txt>, <adj-quality-good.txt>);
-?(.4, <adj-size-big.txt && adj-size-small.txt>, "");
+?(.3, +1:6, "");
+?(.1, <adj-quality-bad.txt>, <adj-quality-good.txt>);
+?(.1, <adj-size-big.txt && adj-size-small.txt>, "");
 ?(.2, <adj-age-old.txt>, "");
 ?(.4, <adj-modifiers.txt>, "");
 ?(.1, <adj-wood.txt>, "");

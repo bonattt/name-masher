@@ -72,11 +72,13 @@ class EnchantmentBonusRule:
         return False
         
     def getGenerator(self, syllable):
-        wordGen = ListGenerator()
+        words = []
+        wordGen = ListGenerator(words)
         inner_syllables = (syllable[1:].split(':'))
         start = int(inner_syllables[0])
         end = int(inner_syllables[1])
-        wordGen.words = range(start, end)
+        for k in range(start, end+1):
+            words.append("+" + str(k))
         return wordGen
       
       
