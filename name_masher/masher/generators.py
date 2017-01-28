@@ -1,9 +1,9 @@
 from random import randint
 from random import random
 
-from masher.exceptions import WordMasherParseException
-from masher.exceptions import WordMasherUnimplimentedException
-from masher.exceptions import WordMasherException
+from name_masher.masher.exceptions import WordMasherParseException
+from name_masher.masher.exceptions import WordMasherUnimplimentedException
+from name_masher.masher.exceptions import WordMasherException
 
 
 class ListGenerator:

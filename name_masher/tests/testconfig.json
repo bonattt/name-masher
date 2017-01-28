@@ -1,0 +1,11 @@
+{
+  "test config key": "test config value",
+  "name file dir": "../name_files",
+  "default_schema": "../schemas/sword.txt",
+  "schemas": {
+    "test configuration": "./test_schema_config.txt",
+    "sword": "../schemas/sword.txt",
+    "axe": "../schemas/axe.txt",
+    "spear": "../schemas/spear.txt"
+  }
+}

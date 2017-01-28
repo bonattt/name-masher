@@ -1,6 +1,6 @@
 import json
 import os.path
-from masher.exceptions import WordMasherConfigException
+from name_masher.masher.exceptions import WordMasherConfigException
 
 class Configuration:
 
@@ -16,8 +16,12 @@ class Configuration:
         file.close()
         self.values = json.loads(config_file_text)
         schema_path = self.values["default_schema"]
-        self.schemas["default"] = self.read_schema_from_file(schema_path)
-        self.load_new_generator("default")
+        try:
+            self.schemas["default"] = self.read_schema_from_file(schema_path)
+            self.load_new_generator("default")
+        except WordMasherConfigException as e:
+            print("Error loading default config:")
+            print(e.msg)
 
     def get(self, key):
         return self.values[key]

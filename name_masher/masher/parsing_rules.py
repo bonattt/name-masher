@@ -1,11 +1,11 @@
 
-from masher.generators import CompositeGenerator
-from masher.generators import ListGenerator
-from masher.generators import ConstantGenerator
-from masher.generators import PhraseGenerator
-from masher.generators import RandomChanceGenerator
+from name_masher.masher.generators import CompositeGenerator
+from name_masher.masher.generators import ListGenerator
+from name_masher.masher.generators import ConstantGenerator
+from name_masher.masher.generators import PhraseGenerator
+from name_masher.masher.generators import RandomChanceGenerator
 
-from masher.exceptions import WordMasherParseException
+from name_masher.masher.exceptions import WordMasherParseException
 
 
 class ConstantRule:
