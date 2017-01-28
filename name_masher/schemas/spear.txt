@@ -1,0 +1,11 @@
+?(.2, +1:6, "");
+?(.2, <adj-quality-bad.txt>, <adj-quality-good.txt>);
+?(.4, <adj-size-big.txt && adj-size-small.txt>, "");
+?(.2, <adj-age-old.txt>, "");
+?(.4, <adj-modifiers.txt>, "");
+?(.1, <adj-wood.txt>, "");
+<noun-spear.txt>;
+"of ";
+?(.3, <adj-total.txt>, "");
+<verb-piercing.txt && verb-wounding.txt && verb-destruction.txt>;
+?(.05, {"and " | <verb-cutting.txt && verb-wounding.txt && verb-destruction.txt>}, "")
