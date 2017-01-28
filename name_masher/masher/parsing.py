@@ -12,6 +12,7 @@ from masher.parsing_rules import EnchantmentBonusRule
 from masher.parsing_rules import PhraseRule
 from masher.parsing_rules import RandomRule
 
+
 class DefaultParser:
 
     def __init__(self):
@@ -51,40 +52,3 @@ class DefaultParser:
             raise e
         except Exception as e:
             raise WordMasherException('unrecognized error: ' + str(e)) 
-    
-"""    
-    def old_parse_syllable(self, syllable):
-        try:
-            if syllable.startswith('<') and syllable.endswith('>'):
-                inner_syllable = syllable[1:-1]
-                file = open('./masher_files/' + inner_syllable, 'r')
-                filetext = file.read()
-                file.close()
-                wordGen = ListGenerator()
-                wordGen.words = filetext.split('\n')
-                return wordGen
-                
-            elif syllable.startswith('+'):
-                wordGen = ListGenerator()
-                inner_syllables = (syllable[1:].split(':'))
-                start = int(inner_syllables[0])
-                end = int(inner_syllables[1])
-                wordGen.words = range(start, end)
-                return wordGen
-                
-            elif (syllable.startswith("'") and syllable.endswith("'")) or (syllable.startswith('"') and syllable.endswith('"')):
-                inner_syllable = syllable[1:-1]
-                wordGen = ConstantGenerator(inner_syllable)
-                return wordGen
-                
-            else:
-                raise WordMasherParseException('Unknown parsing syllable "' + syllable + '"')
-                
-        except WordMasherException as e:
-            print('ERROR!')
-            print(e.msg)
-            return ConstantGenerator('')
-        except Exception as e:
-            raise e     # todo: something 
-"""
-        
