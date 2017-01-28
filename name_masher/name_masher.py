@@ -2,14 +2,17 @@
 # from temp_module import DefaultParser
 
 from masher.parsing import DefaultParser
+import json
 
 
 def run():
-    file = open('./masher_config', 'r')
-    configfile = file.read().split('\n')
+    file = open('./config.json', 'r')
+    configfiletext = file.read()
     file.close()
-    schemapath = configfile[0]
-    
+    config = json.loads(configfiletext)
+    schemapath = config["default_schema"]
+    print("schemapath:", schemapath)
+
     file = open(schemapath, 'r')
     schema = file.read()
     parser = DefaultParser()
