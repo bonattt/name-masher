@@ -2,7 +2,7 @@
 ?(.5, <adj-size-big.txt && adj-size-small.txt>, "");
 ?(.3, <adj-age-old.txt>, "");
 ?(.5, <adj-modifiers.txt>, "");
-?(.1, <adj-color.txt>, "");
+?(.05, <adj-color.txt>, "");
 <noun-axe.txt>;
 "of ";
 ?(.3, <adj-total.txt>, "");

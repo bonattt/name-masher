@@ -1,4 +1,5 @@
 {
+  "name file dir": "./name_files",
   "default_schema": "./schemas/sword.txt",
   "schemas": {
     "sword": "./schemas/sword.txt",
