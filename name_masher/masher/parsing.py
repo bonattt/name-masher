@@ -31,7 +31,6 @@ class DefaultParser:
         syllables = schema.split(';')
         generators = []
         for k in range(len(syllables)):
-            print("DEBUG - parsing rule:", k, syllables[k])
             generators += self.parse_syllable(syllables[k])
         return PhraseGenerator(generators)
         
