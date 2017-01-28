@@ -4,7 +4,7 @@
 ?(.5, <adj-modifiers.txt>, "");
 ?(.1, <adj-color.txt>, "");
 <noun-axe.txt>;
-"of";
+"of ";
 ?(.3, <adj-total.txt>, "");
 <verb-cutting.txt && verb-wounding.txt && verb-destruction.txt>;
 ?(.05, <verb-cutting.txt && verb-wounding.txt && verb-destruction.txt>, "")
