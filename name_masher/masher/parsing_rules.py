@@ -57,7 +57,7 @@ class ListRule:
         inner_syllable = syllable[1:-1].split(' && ')
         wordGen = ListGenerator([])
         for filename in inner_syllable:
-            file = open('./masher_files/' + filename.strip(), 'r')
+            file = open('./name_files/' + filename.strip(), 'r')
             filetext = file.read()
             file.close()
             wordGen.words += filetext.split('\n')
