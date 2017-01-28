@@ -35,7 +35,7 @@ class ListGenerator():
                 
 class CompositeGenerator():
 
-    def __init__(self, generators=[]):
+    def __init__(self, generators):
         self.generators = generators
 
     def __str__(self):
@@ -55,7 +55,7 @@ class CompositeGenerator():
         return self.generators[rn].generateText()        
     
     
-class ConstantGenerator(): 
+class ConstantGenerator():
     
     def __init__(self, constant):
         self.word = constant
@@ -109,7 +109,7 @@ class RandomChanceGenerator():
     
 class PhraseGenerator():
     
-    def __init__(self, generators=[]):
+    def __init__(self, generators):
         self.generators = generators
 
     def __str__(self):
@@ -128,7 +128,7 @@ class PhraseGenerator():
         msg = ''
         length = len(self.generators)
         for k in range(length):
-            msg += self.generators[k].generateText();
-            msg += ' '         
+            msg += self.generators[k].generateText()
+            msg += ' '
             
         return msg

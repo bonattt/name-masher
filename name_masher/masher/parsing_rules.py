@@ -53,7 +53,7 @@ class ListRule():
         return False
         
     def getGenerator(self, syllable):
-        inner_syllable = syllable[1:-1].split(',')
+        inner_syllable = syllable[1:-1].split(' && ')
         wordGen = ListGenerator([])
         for filename in inner_syllable:
             print("DEBUG: opening", './masher_files/' + filename.strip())
@@ -82,7 +82,7 @@ class EnchantmentBonusRule():
         return wordGen
       
       
-class CompositeRule():
+class PhraseRule():
 
     def __init__(self, parser):
         self.parser = parser
@@ -98,6 +98,6 @@ class CompositeRule():
         for seg in syllables:
             generators.append(self.parser.parse_schema(seg))
             
-        return CompositeGenerator(generators)
+        return PhraseGenerator(generators)
         
         
