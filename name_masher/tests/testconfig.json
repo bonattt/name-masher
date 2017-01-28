@@ -1,4 +1,6 @@
 {
+  "version": "1.0.0",
+  "schema syntax": "classic",
   "test config key": "test config value",
   "name file dir": "../name_files",
   "default_schema": "../schemas/sword.txt",

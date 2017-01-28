@@ -1,5 +1,4 @@
-from random import randint
-from random import random
+import random
 
 from name_masher.masher.exceptions import WordMasherParseException
 from name_masher.masher.exceptions import WordMasherUnimplimentedException
@@ -31,7 +30,7 @@ class ListGenerator:
         file.close()
 
     def generateText(self):
-        index = randint(0,len(self.words)-1)
+        index = random.randint(0,len(self.words)-1)
         return self.words[index] + self.ending
 
 
@@ -55,7 +54,7 @@ class CompositeGenerator:
         self.generator.append(generator)
 
     def generateText(self):
-        rn = randint(0, len(self.generators)-1)
+        rn = random.randint(0, len(self.generators)-1)
         return self.generators[rn].generateText()
 
 
@@ -109,18 +108,19 @@ class RandomChanceGenerator:
         return False
 
     def generateText(self):
-        rn = random()
+        rn = random.random()
         if rn <= self.chance:
-            return self.generator.generateText()
+            return self.generator.generateText() + self.ending
         else:
-            return self.alt.generateText()
+            return self.alt.generateText() + self.ending
 
 
 class PhraseGenerator:
 
-    def __init__(self, generators, separator=''):
+    def __init__(self, generators, separator='', ending=''):
         self.generators = generators
         self.separator = separator
+        self.ending = ending
 
     def __str__(self):
         return "<Phrase Generator " + str(self.generators) + ">"
@@ -140,4 +140,4 @@ class PhraseGenerator:
         for k in range(length):
             msg += self.generators[k].generateText() + self.separator
 
-        return msg
+        return msg + self.ending
