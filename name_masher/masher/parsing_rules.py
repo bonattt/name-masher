@@ -7,6 +7,7 @@ from masher.generators import RandomChanceGenerator
 
 from masher.exceptions import WordMasherParseException
 
+
 class ConstantRule:
 
     def metBy(self, syllable):
@@ -99,5 +100,3 @@ class PhraseRule:
             generators.append(self.parser.parse_schema(seg))
             
         return PhraseGenerator(generators)
-        
-        
