@@ -9,3 +9,7 @@ class WordMasherUnimplimentedException(WordMasherException):
 
 class WordMasherParseException(WordMasherException):
     pass
+
+
+class WordMasherConfigException(WordMasherException):
+    pass

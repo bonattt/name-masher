@@ -50,4 +50,4 @@ class DefaultParser:
         except WordMasherException as e:
             raise e
         except Exception as e:
-            raise WordMasherException('unrecognized error: ' + str(e)) 
+            raise e # WordMasherException('unrecognized error: ' + str(e))

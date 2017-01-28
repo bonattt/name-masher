@@ -2,24 +2,19 @@
 # from temp_module import DefaultParser
 
 from masher.parsing import DefaultParser
-import json
+from masher.configuration import Configuration
 
 
 def run():
-    file = open('./config.json', 'r')
-    configfiletext = file.read()
-    file.close()
-    config = json.loads(configfiletext)
-    schemapath = config["default_schema"]
-    print("schemapath:", schemapath)
-
-
     # file = open(schemapath, 'r')
     # schema = file.read()
     # parser = DefaultParser()
     # generator = parser.parse_schema(schema)
 
-    generator = read_new_schema(schemapath)
+    config = Configuration(DefaultParser())
+    config.load_from_file('config.json')
+
+    generator = config.get_generator("default")
     all_generators = {"default": generator}
 
 #    wordGen1 = WordGenerator('./masher_files/adj-total.txt');
