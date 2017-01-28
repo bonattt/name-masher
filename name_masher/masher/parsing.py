@@ -9,7 +9,7 @@ from masher.exceptions import WordMasherException
 from masher.parsing_rules import ConstantRule
 from masher.parsing_rules import ListRule
 from masher.parsing_rules import EnchantmentBonusRule
-from masher.parsing_rules import CompositeRule
+from masher.parsing_rules import PhraseRule
 from masher.parsing_rules import RandomRule
 
 class DefaultParser():
@@ -19,7 +19,7 @@ class DefaultParser():
         self.addRule(ConstantRule())
         self.addRule(ListRule())
         self.addRule(EnchantmentBonusRule())
-        self.addRule(CompositeRule(self))
+        self.addRule(PhraseRule(self))
         self.addRule(RandomRule(self))
         
     def addRule(self, rule):

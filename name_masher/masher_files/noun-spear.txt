@@ -1,0 +1,11 @@
+spear
+long-spear
+short-spear
+glaive
+trident
+bayonet
+lance
+javelin
+pike
+halberd
+skewer

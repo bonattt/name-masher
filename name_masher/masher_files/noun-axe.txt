@@ -1,0 +1,9 @@
+axe
+hatchet
+battle-axe
+war-axe
+great-axe
+bearded-axe
+heavy-axe
+halberd
+tomahawk

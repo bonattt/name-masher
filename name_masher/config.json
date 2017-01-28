@@ -1,0 +1,8 @@
+{
+  "default_schema": "./schemas/schema.txt",
+  "schemas": {
+    "sword": "./schemas/sword.txt",
+    "axe": "./schemas/axe.txt",
+    "spear": "./schemas/spear.txt"
+  }
+}

@@ -1,6 +1,4 @@
 vorpal
-greater
-lesser
 flaming
 burning
 holy
@@ -8,5 +6,4 @@ sacred
 unholy
 cursed
 rusty
-sharp
 heroic

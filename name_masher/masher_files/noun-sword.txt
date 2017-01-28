@@ -1,0 +1,13 @@
+longsword
+shortsword
+arming-sword
+broadsword
+sword
+blade
+greatsword
+rapier
+scimitar
+falchion
+katana
+wakisashi
+machete

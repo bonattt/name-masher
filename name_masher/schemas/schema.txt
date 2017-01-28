@@ -1,5 +1,5 @@
 <adj-modifiers.txt>;
 <noun-weapon.txt>;
-'of';
+'of ';
 <adj-total.txt>;
 <verb-cutting.txt>
