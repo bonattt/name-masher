@@ -1,6 +1,6 @@
 import json
 import os.path
-from name_masher.masher.exceptions import WordMasherConfigException
+from masher.exceptions import WordMasherConfigException
 
 class Configuration:
 

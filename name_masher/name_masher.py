@@ -1,8 +1,8 @@
 # from masher.parsing import DefaultParser
 # from temp_module import DefaultParser
 
-from name_masher.masher.parsing import DefaultParser
-from name_masher.masher.configuration import Configuration
+from masher.parsing import DefaultParser
+from masher.configuration import Configuration
 
 
 def run():
