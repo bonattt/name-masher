@@ -1,0 +1,9 @@
+
+
+test:
+  override:
+    - python ./name_masher/tests/configuration_test.py
+    - python ./name_masher/tests/generators_test.py
+    - python ./name_masher/tests/masher_test.py
+    - python ./name_masher/tests/parsing_rules_test.py
+    - python ./name_masher/tests/parsing_test.py
