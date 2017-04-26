@@ -32,19 +32,17 @@ def get_ending(tree):
 class ConstantRule:
 
     def metByTag(self, tag):
-        if tag == 'constant':
+        if tag == 'const':
             return True
         return False
 
     def metBy(self, tree):
-        if self.metByTag(tree.tag):
-            return True
-        return False
+        return self.metByTag(tree.tag)
 
     def getGenerator(self, tree):
         txt = clean_text_node(tree.text)
         if not txt or txt == '':
-            raise MasherXmlRuleError("constant tag contains bad text")
+            raise MasherXmlRuleError("const tag contains bad text")
         return ConstantGenerator(txt)
 
 # rule: ?(_chance, _generator_, _elseGenereator_)
@@ -62,9 +60,7 @@ class RandomRule:
         return False
 
     def metBy(self, tree):
-        if self.metByTag(tree.tag):
-            return True
-        return False
+        return self.metByTag(tree.tag)
 
     def getGenerator(self, tree):
         if len(tree) > 2:
@@ -75,8 +71,8 @@ class RandomRule:
         chance = float(get_attrib(tree, 'chance', self.default_chance))
         ending = get_attrib(tree, 'ending', self.default_ending)
 
-        gen1 = self.parser.parse_schema(tree[0])
-        gen2 = self.parser.parse_schema(tree[1])
+        gen1 = self.parser.parse_tree(tree[0])
+        gen2 = self.parser.parse_tree(tree[1])
         return RandomChanceGenerator(gen1, gen2, chance, ending)
 
 
@@ -91,9 +87,7 @@ class FileListRule:
         return False
 
     def metBy(self, tree):
-        if self.metByTag(tree.tag):
-            return True
-        return False
+        return self.metByTag(tree.tag)
 
     def getGenerator(self, tree):
         file_names = []
@@ -131,15 +125,20 @@ class ListRule:
         return False
 
     def metBy(self, tree):
-        if self.metByTag(tree.tag):
-            return True
-        return False
+        return self.metByTag(tree.tag)
 
     def getGenerator(self, tree):
         ending = get_attrib(tree, 'ending', self.default_ending)
         text = clean_text_node(tree.text)
         words = text.split(';')
-        return ListGenerator(words, ending)
+        clean_words = []
+        for i in range(len(words)):
+            new_word = words[i].strip()
+            if not new_word: continue
+            if new_word == '': continue
+            clean_words.append(new_word)
+
+        return ListGenerator(clean_words, ending)
 
 
 class PhraseRule:
@@ -149,16 +148,19 @@ class PhraseRule:
         self.default_ending = ending
         self.default_separator = separator
 
-    def metBy(self, tree):
-        if tree.startswith('{') and tree.endswith('}'):
+    def metByTag(self, tag):
+        if tag == "phrase":
             return True
         return False
+
+    def metBy(self, tree):
+        return self.metByTag(tree.tag)
 
     def getGenerator(self, tree):
         generators = []
         for child in tree:
             try:
-                new_gen = self.parser.parse_schema(child)
+                new_gen = self.parser.parse_tree(child)
                 generators.append(new_gen)
             except MasherXmlRuleError as e:
                 print("warning: phrase sub-generator failed to build")

@@ -12,7 +12,7 @@ class XParser():
         self.rules = []
 
     def add_rule(self, rule):
-        pass
+        self.rules.append(rule)
 
     def parse_file(self, filepath):
         f = open(filepath)

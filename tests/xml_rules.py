@@ -17,25 +17,25 @@ class TestMisc(unittest.TestCase):
 class TextConstantRule(unittest.TestCase):
 
     def testMetBy(self):
-        xml = '<constant></constant>'
+        xml = '<const></const>'
         root = ElementTree.fromstring(xml)
         xml_rules.ConstantRule().metBy(root)
 
     def testConstantWSpaces(self):
-        root = ElementTree.fromstring('<constant> hello </constant>')
+        root = ElementTree.fromstring('<const> hello </const>')
         txt = xml_rules.ConstantRule().getGenerator(root).generateText()
         self.assertEqual('hello', txt)
 
     def testConstantWLineBreaks(self):
-        xml = """<constant>
+        xml = """<const>
             hello
-        </constant>"""
+        </const>"""
         root = ElementTree.fromstring(xml)
         txt = xml_rules.ConstantRule().getGenerator(root).generateText()
         self.assertEqual('hello', txt)
 
     def testConstantNoText(self):
-        xml = """<constant></constant>"""
+        xml = """<const></const>"""
         root = ElementTree.fromstring(xml)
         with self.assertRaises(MasherXmlRuleError):
             txt = xml_rules.ConstantRule().getGenerator(root).generateText()
@@ -49,7 +49,7 @@ class TestRandomChanceRule(unittest.TestCase):
         xml_rules.ConstantRule().metBy(root)
 
     def testRandomDefaultChance(self):
-        xml = """<random><constant>hello</constant><constant>goodbye</constant></random>"""
+        xml = """<random><const>hello</const><const>goodbye</const></random>"""
         root = ElementTree.fromstring(xml)
         gen = xml_rules.RandomRule(MockParser()).getGenerator(root)
         self.assertEqual(.5, gen.chance)
@@ -57,8 +57,8 @@ class TestRandomChanceRule(unittest.TestCase):
     def testRandomChanceGiven(self):
         xml = """
         <random chance='.3'>
-            <constant>hello</constant>
-            <constant>goodbye</constant>
+            <const>hello</const>
+            <const>goodbye</const>
         </random>"""
         # xml = make_xml(xml)
         root = ElementTree.fromstring(xml)
@@ -66,25 +66,25 @@ class TestRandomChanceRule(unittest.TestCase):
         self.assertEqual(.3, gen.chance)
 
     def testRandomDffaultEnding(self):
-        xml = """<random><constant>hello</constant><constant>goodbye</constant></random>"""
+        xml = """<random><const>hello</const><const>goodbye</const></random>"""
         root = ElementTree.fromstring(xml)
         gen = xml_rules.RandomRule(MockParser()).getGenerator(root)
         self.assertEqual(' ', gen.ending)
 
     def testRandomEndingGiven(self):
-        xml = """<random ending="-"><constant>hello</constant><constant>goodbye</constant></random>"""
+        xml = """<random ending="-"><const>hello</const><const>goodbye</const></random>"""
         root = ElementTree.fromstring(xml)
         gen = xml_rules.RandomRule(MockParser()).getGenerator(root)
         self.assertEqual('-', gen.ending)
 
     def testRandomToFewConstants(self):
-        xml = """<random ending="-"><constant>goodbye</constant></random>"""
+        xml = """<random ending="-"><const>goodbye</const></random>"""
         root = ElementTree.fromstring(xml)
         with self.assertRaises(MasherXmlRuleError):
             gen = xml_rules.RandomRule(MockParser()).getGenerator(root)
 
     def testRandomToManyConstants(self):
-        xml = """<random ending="-"><constant>goodbye</constant><constant>goodbye</constant><constant>goodbye</constant></random>"""
+        xml = """<random ending="-"><const>goodbye</const><const>goodbye</const><const>goodbye</const></random>"""
         root = ElementTree.fromstring(xml)
         with self.assertRaises(MasherXmlRuleError):
             gen = xml_rules.RandomRule(MockParser()).getGenerator(root)
@@ -165,31 +165,31 @@ class TestPhraseParser(unittest.TestCase):
         xml_rules.ConstantRule().metBy(root)
 
     def testPhraseDefaultCorrectNumberGenerators(self):
-        xml = """<phrase> <constant>1</constant> <constant>2</constant> </phrase>"""
+        xml = """<phrase> <const>1</const> <const>2</const> </phrase>"""
         root = ElementTree.fromstring(xml)
         gen = self.rule.getGenerator(root)
         self.assertEquals(2, len(gen.generators))
 
     def testPhraseDefaultEnding(self):
-        xml = """<phrase> <constant>1</constant> <constant>2</constant> </phrase>"""
+        xml = """<phrase> <const>1</const> <const>2</const> </phrase>"""
         root = ElementTree.fromstring(xml)
         gen = self.rule.getGenerator(root)
         self.assertEquals('', gen.ending)
 
     def testPhraseDefaultSeparator(self):
-        xml = """<phrase> <constant>1</constant> <constant>2</constant> </phrase>"""
+        xml = """<phrase> <const>1</const> <const>2</const> </phrase>"""
         root = ElementTree.fromstring(xml)
         gen = self.rule.getGenerator(root)
         self.assertEquals(' ', gen.separator)
 
     def testPhraseSetEnding(self):
-        xml = """<phrase ending="-"> <constant>1</constant> <constant>2</constant> </phrase>"""
+        xml = """<phrase ending="-"> <const>1</const> <const>2</const> </phrase>"""
         root = ElementTree.fromstring(xml)
         gen = self.rule.getGenerator(root)
         self.assertEquals('-', gen.ending)
 
     def testPhraseSetSeparator(self):
-        xml = """<phrase separator="=="> <constant>1</constant> <constant>2</constant> </phrase>"""
+        xml = """<phrase separator="=="> <const>1</const> <const>2</const> </phrase>"""
         root = ElementTree.fromstring(xml)
         gen = self.rule.getGenerator(root)
         self.assertEquals('==', gen.separator)
