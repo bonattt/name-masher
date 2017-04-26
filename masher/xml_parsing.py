@@ -21,7 +21,7 @@ class XParser():
         return self.parse_schema(schema)
 
     def parse_schema(self, schema):
-        root = ElementTree.fromsting(schema)
+        root = ElementTree.fromstring(schema)
         return self.parse_tree(root)
 
     def parse_tree(self, tree):
