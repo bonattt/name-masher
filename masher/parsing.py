@@ -1,16 +1,16 @@
 
-from name_masher.masher.generators import PhraseGenerator
+from masher.generators import PhraseGenerator
 # from masher.generators import ListGenerator
 # from masher.generators import ConstnantGenerator
 
-from name_masher.masher.exceptions import WordMasherParseException
-from name_masher.masher.exceptions import WordMasherException
+from masher.exceptions import WordMasherParseException
+from masher.exceptions import WordMasherException
 
-from name_masher.masher.parsing_rules import ConstantRule
-from name_masher.masher.parsing_rules import ListRule
-from name_masher.masher.parsing_rules import EnchantmentBonusRule
-from name_masher.masher.parsing_rules import PhraseRule
-from name_masher.masher.parsing_rules import RandomRule
+from masher.parsing_rules import ConstantRule
+from masher.parsing_rules import ListRule
+from masher.parsing_rules import EnchantmentBonusRule
+from masher.parsing_rules import PhraseRule
+from masher.parsing_rules import RandomRule
 
 
 class DefaultParser:
