@@ -7,17 +7,19 @@ from masher.generators import ConstantGenerator
 def make_xml(xml):
     return '<?xml version="1.0"?><data>' + xml + '</data>'
 
-class TextConstantRule(unittest.TestCase):
-
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
+class TestMisc(unittest.TestCase):
 
     def testCleanText(self):
         txt = xml_rules.clean_text_node('\n\thello\n\t')
         self.assertEqual('hello', txt)
+
+
+class TextConstantRule(unittest.TestCase):
+
+    def testMetBy(self):
+        xml = '<constant></constant>'
+        root = ElementTree.fromstring(xml)
+        xml_rules.ConstantRule().metBy(root)
 
     def testConstantWSpaces(self):
         root = ElementTree.fromstring('<constant> hello </constant>')
@@ -40,6 +42,11 @@ class TextConstantRule(unittest.TestCase):
 
 
 class TestRandomChanceRule(unittest.TestCase):
+
+    def testMetBy(self):
+        xml = '<random></random>'
+        root = ElementTree.fromstring(xml)
+        xml_rules.ConstantRule().metBy(root)
 
     def testRandomDefaultChance(self):
         xml = """<random><constant>hello</constant><constant>goodbye</constant></random>"""
@@ -85,6 +92,11 @@ class TestRandomChanceRule(unittest.TestCase):
 
 class TestFileListRule(unittest.TestCase):
 
+    def testMetBy(self):
+        xml = '<filelist></filelist>'
+        root = ElementTree.fromstring(xml)
+        xml_rules.ConstantRule().metBy(root)
+
     def testFilelistDefault(self):
         xml = """<filelist ending="-">./test_files/test_names1.txt; ./test_files/test_names2.txt</filelist>"""
         root = ElementTree.fromstring(xml)
@@ -109,6 +121,11 @@ class TestFileListRule(unittest.TestCase):
 
 
 class TestListRule(unittest.TestCase):
+
+    def testMetBy(self):
+        xml = '<list></list>'
+        root = ElementTree.fromstring(xml)
+        xml_rules.ConstantRule().metBy(root)
 
     def testListDefault(self):
         xml = """<list>word1;word2;word3</list>"""
@@ -141,6 +158,11 @@ class TestPhraseParser(unittest.TestCase):
 
     def setUp(self):
         self.rule = xml_rules.PhraseRule(MockParser())
+
+    def testMetBy(self):
+        xml = '<phrase></phrase>'
+        root = ElementTree.fromstring(xml)
+        xml_rules.ConstantRule().metBy(root)
 
     def testPhraseDefaultCorrectNumberGenerators(self):
         xml = """<phrase> <constant>1</constant> <constant>2</constant> </phrase>"""

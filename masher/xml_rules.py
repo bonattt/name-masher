@@ -37,7 +37,7 @@ class ConstantRule:
         return False
 
     def metBy(self, tree):
-        if self.metByTag(tree.tree):
+        if self.metByTag(tree.tag):
             return True
         return False
 
@@ -62,7 +62,7 @@ class RandomRule:
         return False
 
     def metBy(self, tree):
-        if self.metByTag(tree.tree):
+        if self.metByTag(tree.tag):
             return True
         return False
 
@@ -91,7 +91,7 @@ class FileListRule:
         return False
 
     def metBy(self, tree):
-        if self.metByTag(tree.tree):
+        if self.metByTag(tree.tag):
             return True
         return False
 
