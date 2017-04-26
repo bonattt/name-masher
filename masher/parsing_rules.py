@@ -44,9 +44,9 @@ class RandomRule:
             raise WordMasherParseException('RandomRule vilation: incorrect number of arguments.' + str(len(subsyllable)))
         
         return RandomChanceGenerator(generator, elseGen, chance)
-        
 
 class ListRule:
+    """-"""
 
     def metBy(self, syllable):
         if syllable.startswith('<') and syllable.endswith('>'):
