@@ -29,25 +29,14 @@ def run():
             break
 
         elif user_in.startswith('save '):
-            commands = user_in.split(' ')
-            num = int(commands[1])
-            if len(commands) > 2:
-                filepath = commands[2]
-            else:
-                filepath = './output.txt'
+            save_words_to_file()
 
-            file = open(filepath, 'w')
-            for k in range(num):
-                file.write(generator.generateText())
-                file.write('\n\n')
-            file.close()
-
-        elif user_in.startswith('config '):
-            try:
-                new_schema = user_in[7:]
-                generator = parser.parse_schema(schema)
-            except Exception as e:
-                print('an error occured parsing new config')
+        # elif user_in.startswith('config '):
+        #     try:
+        #         new_schema = user_in[7:]
+        #         generator = parser.parse_schema(schema)
+        #     except Exception as e:
+        #         print('an error occured parsing new config')
 
         elif user_in in all_generators:
             generator = all_generators[user_in]
@@ -61,6 +50,22 @@ def run():
             #     print('"'+user_in+'"', "is not a schema.")
 
     print('exiting shell. Have a nice day! :)')
+
+
+def save_words_to_file(user_in, generator):
+    commands = user_in.split(' ')
+    num = int(commands[1])
+    if len(commands) > 2:
+        filepath = commands[2]
+    else:
+        filepath = './output.txt'
+
+    file = open(filepath, 'w')
+    for k in range(num):
+        file.write(generator.generateText())
+        file.write('\n\n')
+    file.close()
+
 
 def read_new_schema(filepath):
     file = open(filepath, 'r')
