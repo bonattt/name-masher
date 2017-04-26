@@ -4,7 +4,7 @@
 from masher.parsing import DefaultParser
 from masher.configuration import Configuration
 
-
+    
 def run():
     # file = open(schemapath, 'r')
     # schema = file.read()
@@ -73,7 +73,6 @@ def read_new_schema(filepath):
 def main():
     print('welcome to name masher!');
     run();
-
 
 
 if __name__ == "__main__":
