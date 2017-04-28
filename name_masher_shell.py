@@ -1,17 +1,26 @@
 # from masher.parsing import DefaultParser
 # from temp_module import DefaultParser
 
+from masher.xml_parsing import XParser
+from masher.xml_rules import add_default_rules
 from masher.parsing import DefaultParser
 from masher.configuration import Configuration
 
-    
+
+def build_parser():
+    parser = XParser()
+    add_default_rules(parser)
+    return parser
+
+
 def run():
     # file = open(schemapath, 'r')
     # schema = file.read()
     # parser = DefaultParser()
     # generator = parser.parse_schema(schema)
-
-    config = Configuration(DefaultParser())
+    parser = build_parser()
+    config = Configuration(parser)
+    # config = Configuration(DefaultParser())
     config.load_from_file('config.json')
 
     generator = config.get_generator("default")

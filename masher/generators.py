@@ -6,6 +6,7 @@ from masher.exceptions import WordMasherException
 
 
 class ListGenerator:
+    """this generator picks a random word from a stored list of words."""
 
     def __init__(self, words, ending=' '):
         # cannot use words=[] because of a very strange bug I got where python
@@ -35,6 +36,8 @@ class ListGenerator:
 
 
 class CompositeGenerator:
+    """the composite generator stores multiple generators, and generates
+    a word for only one of these generators (selected randomly)"""
 
     def __init__(self, generators, ending=' '):
         self.generators = generators
@@ -59,6 +62,7 @@ class CompositeGenerator:
 
 
 class ConstantGenerator:
+    """the constant generator is given a constant at creation, and always returns this value"""
 
     def __init__(self, constant):
         self.word = constant
@@ -81,6 +85,8 @@ class ConstantGenerator:
 
 
 class RandomChanceGenerator:
+    """the random chance generator has a weighted change to
+     generate a word from one of two stored generators"""
 
     def __init__(self, generator, alt, chance, ending=" "):
         if (chance >= 1) or (chance <= 0):
@@ -116,6 +122,8 @@ class RandomChanceGenerator:
 
 
 class PhraseGenerator:
+    """the PhraseGenerator stores multiple generators, and it
+    generates a word from each generator in the order they are stored"""
 
     def __init__(self, generators, separator='', ending=''):
         self.generators = generators
