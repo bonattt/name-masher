@@ -7,6 +7,14 @@ from masher.generators import RandomChanceGenerator
 
 from masher.exceptions import WordMasherParseException
 
+def add_default_rules(parser):
+    parser.add_rule(ConstantRule())
+    parser.add_rule(ListRule())
+    parser.add_rule(FileListRule())
+    parser.add_rule(RandomRule(parser))
+    parser.add_rule(PhraseRule(parser))
+
+
 class MasherXmlRuleError(Exception):
     pass
 

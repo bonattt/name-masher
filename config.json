@@ -2,9 +2,6 @@
   "name file dir": "./name_files",
   "default_schema": "./schemas/sword.xml",
   "schemas": {
-//    "sword": "./schemas/sword.txt",
-//    "axe": "./schemas/axe.txt",
-//    "spear": "./schemas/spear.txt",
     "sword": "./schemas/sword.xml"
   }
 }
