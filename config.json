@@ -2,6 +2,7 @@
   "name file dir": "./name_files",
   "default_schema": "./schemas/sword.xml",
   "schemas": {
-    "sword": "./schemas/sword.xml"
+    "sword": "./schemas/sword.xml",
+    "pitch": "./schemas/impromptu_pitch.xml"
   }
 }

@@ -19,7 +19,8 @@ class ConstantRule:
     def getGenerator(self, syllable):
         return ConstantGenerator(syllable[1:-1])
         
-# rule: ?(_chance, _generator_, _elseGenereator_)
+# rule: ?(_chance, _generator_, _el
+# seGenereator_)
 # else generator is optional, it defaults to the constant ''
 class RandomRule:
 

@@ -2,7 +2,6 @@ from xml.etree import ElementTree
 from masher.xml_rules import MasherXmlRuleError
 
 
-
 class MasherXmlParseError(Exception):
     pass
 

@@ -13,6 +13,7 @@ def add_default_rules(parser):
     parser.add_rule(FileListRule())
     parser.add_rule(RandomRule(parser))
     parser.add_rule(PhraseRule(parser))
+    parser.add_rule(NewlineRule())
 
 
 class MasherXmlRuleError(Exception):
@@ -37,6 +38,20 @@ def get_ending(tree):
     return get_attrib(tree, 'ending', ' ')
 
 
+class NewlineRule:
+
+    def metByTag(self, tag):
+        if tag == 'br':
+            return True
+        return False
+
+    def metBy(self, tree):
+        return self.metByTag(tree.tag)
+
+    def getGenerator(self, tree):
+        return ConstantGenerator('\n')
+
+
 class ConstantRule:
 
     def metByTag(self, tag):
@@ -49,6 +64,12 @@ class ConstantRule:
 
     def getGenerator(self, tree):
         txt = clean_text_node(tree.text)
+
+        if 'start' in tree.attrib:
+            txt = tree.attrib['start'] + txt
+        elif 'end' in tree.attrib:
+            txt = txt + tree.attrib['end']
+
         if not txt or txt == '':
             raise MasherXmlRuleError("const tag contains bad text")
         return ConstantGenerator(txt)
@@ -152,7 +173,7 @@ class ListRule:
 
 class PhraseRule:
 
-    def __init__(self, parser, ending='', separator=' '):
+    def __init__(self, parser, ending='', separator=''):
         self.parser = parser
         self.default_ending = ending
         self.default_separator = separator

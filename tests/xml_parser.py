@@ -54,5 +54,16 @@ class ParserTest(unittest.TestCase):
         self.assertEqual("goodbye", gen.generators[1].word)
 
 
+class NewlineTest(unittest.TestCase):
+
+    def setUp(self):
+        xml = """<?xml version="1.0"?> <br/>"""
+        self.gen = self.parser.parse_schema(xml)
+        self.text = self.gen.generateText()
+
+    def testTextGenerated(self):
+        self.assertEqual("\n", self.text)
+
+
 if __name__ == "__main__":
     unittest.main()
