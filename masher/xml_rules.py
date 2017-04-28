@@ -53,6 +53,7 @@ class ConstantRule:
             raise MasherXmlRuleError("const tag contains bad text")
         return ConstantGenerator(txt)
 
+
 # rule: ?(_chance, _generator_, _elseGenereator_)
 # else generator is optional, it defaults to the constant ''
 class RandomRule:
